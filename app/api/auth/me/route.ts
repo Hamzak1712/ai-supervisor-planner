@@ -4,7 +4,8 @@ import { verifyTokenFromHeader } from "@/lib/auth";
 
 export async function GET(req: Request) {
   try {
-    const tokenData = verifyTokenFromHeader(req);
+    const tokenData = verifyTokenFromHeader(req.headers.get("authorization"));
+
     if (!tokenData) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -15,6 +16,8 @@ export async function GET(req: Request) {
         id: true,
         email: true,
         role: true,
+        createdAt: true,
+        updatedAt: true,
         studentProfile: {
           select: { fullName: true, skills: true, interests: true },
         },
