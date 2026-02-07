@@ -1,65 +1,166 @@
-import Image from "next/image";
+import React from "react"
+import Link from "next/link"
+import {
+  GraduationCap,
+  Users,
+  BarChart3,
+  Shield,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="relative min-h-screen">
+      {/* Background decorations */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -right-40 top-1/2 h-96 w-96 rounded-full bg-chart-2/5 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+      </div>
+
+      {/* Grid pattern overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
+                            linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Header */}
+      <header className="relative z-10 flex items-center justify-between px-6 py-4 lg:px-12">
+        <div className="flex items-center gap-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+            <GraduationCap className="h-6 w-6 text-primary" />
+          </div>
+          <span className="text-xl font-bold">SupervisorMatch</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" asChild>
+            <Link href="/dashboard">Dashboard</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/login">Sign In</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/register">Get Started</Link>
+          </Button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-16 text-center lg:px-12 lg:pt-24">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-card/50 px-4 py-1.5 text-sm backdrop-blur-sm">
+          <Sparkles className="h-4 w-4 text-primary" />
+          <span className="text-muted-foreground">AI-Powered Matching</span>
+        </div>
+
+        <h1 className="mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          Find Your Ideal{" "}
+          <span className="gradient-text">Academic Supervisor</span>{" "}
+          with AI
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
+          Intelligent matching system that connects students with supervisors
+          based on research interests, expertise, and project requirements.
+          Streamline your academic journey.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button size="lg" asChild>
+            <Link href="/planner">
+              Start Matching
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/dashboard">View Dashboard</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-12">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            Everything You Need
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            A comprehensive platform for academic project supervision
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <FeatureCard
+            icon={<Sparkles className="h-6 w-6" />}
+            title="AI-Powered Matching"
+            description="Automatically match students to supervisors using intelligent analysis of topics and expertise."
+          />
+          <FeatureCard
+            icon={<BarChart3 className="h-6 w-6" />}
+            title="Adaptive Planning"
+            description="Generate structured timelines and milestones for supervision and project delivery."
+          />
+          <FeatureCard
+            icon={<Users className="h-6 w-6" />}
+            title="Supervisor Oversight"
+            description="Supervisors can monitor progress and manage multiple students from one dashboard."
+          />
+          <FeatureCard
+            icon={<Shield className="h-6 w-6" />}
+            title="GDPR Compliant"
+            description="Designed with data privacy and security as a core principle."
+          />
+          <FeatureCard
+            icon={<GraduationCap className="h-6 w-6" />}
+            title="University Focused"
+            description="Built around real academic workflows, deadlines, and assessment structures."
+          />
+          <FeatureCard
+            icon={<BarChart3 className="h-6 w-6" />}
+            title="Admin Control"
+            description="Full administrative control for capacity, matching rules, and oversight."
+          />
         </div>
-      </main>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-border/50 px-6 py-8 lg:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="h-5 w-5 text-primary" />
+            <span className="font-semibold">SupervisorMatch</span>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Final Year Project · IPD Frontend Demo · GDPR Compliant
+          </p>
+        </div>
+      </footer>
+    </main>
+  )
+}
+
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode
+  title: string
+  description: string
+}) {
+  return (
+    <div className="group rounded-xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-colors hover:border-primary/30 hover:bg-card">
+      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+        {icon}
+      </div>
+      <h3 className="mb-2 font-semibold">{title}</h3>
+      <p className="text-sm text-muted-foreground">{description}</p>
     </div>
-  );
+  )
 }
